@@ -15,7 +15,7 @@ export default function Footer(){
           margin-bottom: 0px;
         }
       `}</style>
-      <h1>Copyright (c) 2018</h1>
+      <h1>Copyright (c) 2018 Ernest Bruno</h1>
     </div>
   );
 }
