@@ -28,7 +28,6 @@ export default class App extends React.Component{
       [newInquiryId]: newInquiry
     });
     this.setState({masterInquiryList: newMasterInquryList});
-    console.log(this.state.masterInquiryList);
   }
   render(){
     return(
