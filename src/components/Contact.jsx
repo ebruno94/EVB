@@ -19,7 +19,7 @@ export default function Contact(props){
   return(
     <div>
       <h1>This is the Contact page</h1>
-      <form onSubmit={handleNewFormSubmission()}>
+      <form onSubmit={handleNewFormSubmission}>
         <label>Name</label>
         <input
           type='text'
