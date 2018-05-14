@@ -18,7 +18,10 @@ export default class App extends React.Component{
   render(){
     return(
       <div>
-        <Header/>
+        {(window.location.hash !== '#/')
+        ? <Header/>
+        : <span></span>
+        }
         <Switch>
           <Route exact path='/' render={()=><Home/>} />
           <Route path='/portfolio' render={()=><Portfolio/>} />
