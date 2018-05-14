@@ -6,6 +6,7 @@ import Home from './Home';
 import Contact from './Contact';
 import About from './About';
 import Portfolio from './Portfolio';
+import Admin from './Admin';
 
 import { Switch, Route } from 'react-router-dom';
 
@@ -23,6 +24,7 @@ export default class App extends React.Component{
           <Route path='/portfolio' render={()=><Portfolio/>} />
           <Route path='/about' render={()=><About/>} />
           <Route path='/contact' render={()=><Contact/>} />
+          <Route path='/admin' render={()=><Admin/>} />
           <Route component={Error404}/>
         </Switch>
         <Footer/>
