@@ -1,6 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-export default function Contact(){
+export default function Contact(props){
   let _name = null;
   let _phone = null;
   let _email = null;
@@ -8,12 +9,17 @@ export default function Contact(){
 
   function handleNewFormSubmission(e){
     e.preventDefault();
+    props.onNewInquirySubmission({name: _name.value, phone: _phone.value, email: _email.value, question: _question.value});
+    _name = '';
+    _phone = '';
+    _email = '';
+    _question = '';
   }
 
   return(
     <div>
       <h1>This is the Contact page</h1>
-      <form onSubmit={handleNewFormSubmission}>
+      <form onSubmit={handleNewFormSubmission()}>
         <label>Name</label>
         <input
           type='text'
@@ -43,3 +49,7 @@ export default function Contact(){
     </div>
   );
 }
+
+Contact.propTypes = {
+  onNewInquirySubmission: PropTypes.func
+};
