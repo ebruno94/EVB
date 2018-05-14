@@ -1,4 +1,7 @@
 import React from 'react';
+import Services from './Services';
+import Who from './Who';
+import Mission from './Mission';
 
 export default class About extends React.Component{
   constructor(props){
@@ -7,11 +10,22 @@ export default class About extends React.Component{
       clicked: 'who'
     };
     this.handleClick = this.handleClick.bind(this);
-  };
+    this.handleRenderComponent = this.handleRenderComponent.bind(this);
+  }
 
   handleClick(component){
-    this.setState({clicked: component};);
-  };
+    this.setState({clicked: component});
+  }
+
+  handleRenderComponent(){
+    if (this.state.clicked === 'who'){
+      return <Who/>;
+    } else if (this.state.clicked === 'mission'){
+      return <Mission/>;
+    } else {
+      return <Services/>;
+    }
+  }
 
   render(){
     return(
@@ -20,20 +34,7 @@ export default class About extends React.Component{
         <button onClick={() => this.handleClick('who')}>Who We Are</button>
         <button onClick={() => this.handleClick('mission')}>Mission</button>
         <button onClick={() => this.handleClick('services')}>Services</button>
-        <div>
-          <h1>WHO WE ARE</h1>
-          <hr/>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-          <br/>
-
-          <h1>MISSION</h1>
-          <hr/>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-
-          <h1>SERVICES</h1>
-          <hr/>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-        </div>
+        {this.handleRenderComponent()}
       </div>
     );
   }
