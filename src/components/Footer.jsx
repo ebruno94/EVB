@@ -1,10 +1,11 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 
 export default function Footer(){
   return(
     <div>
       <style jsx>{`
-        h1{
+        .footer{
           text-align: center;
           bottom: 0;
           left: 0;
@@ -15,7 +16,10 @@ export default function Footer(){
           margin-bottom: 0px;
         }
       `}</style>
-      <h1>Copyright (c) 2018 Ernest Bruno</h1>
+      <div className='footer'>
+        <Link to='/admin'>Admin Login</Link>
+        <h1>Copyright (c) 2018 Ernest Bruno</h1>
+      </div>
     </div>
   );
 }
