@@ -8,25 +8,40 @@ import About from './About';
 import Portfolio from './Portfolio';
 import Admin from './Admin';
 
+import {v4} from 'uuid';
+
 import { Switch, Route } from 'react-router-dom';
 
 export default class App extends React.Component{
   constructor(props){
     super(props);
-    this.state = {};
+    this.state = {
+      masterInquiryList: {}
+    };
+
+    this.handleInquirySubmission = this.handleInquirySubmission.bind(this);
+  }
+
+  handleInquirySubmission(newInquiry){
+    let newInquiryId = v4();
+    let newMasterInquryList = Object.assign({}, this.state.masterInquiryList, {
+      [newInquiryId]: newInquiry
+    });
+    this.setState({masterInquiryList: newMasterInquryList});
+    console.log(this.state.masterInquiryList);
   }
   render(){
     return(
       <div>
         {(window.location.hash !== '#/')
-        ? <Header/>
-        : <span></span>
+          ? <Header/>
+          : <span></span>
         }
         <Switch>
           <Route exact path='/' render={()=><Home/>} />
           <Route path='/portfolio' render={()=><Portfolio/>} />
           <Route path='/about' render={()=><About/>} />
-          <Route path='/contact' render={()=><Contact/>} />
+          <Route path='/contact' render={()=><Contact onNewInquirySubmission={this.handleInquirySubmission}/>} />
           <Route path='/admin' render={()=><Admin/>} />
           <Route component={Error404}/>
         </Switch>
