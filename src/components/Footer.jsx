@@ -17,7 +17,6 @@ export default function Footer(){
         }
       `}</style>
       <div className='footer'>
-        <Link to='/admin'>Admin Login</Link>
         <h1>Copyright (c) 2018 Ernest Bruno</h1>
       </div>
     </div>
