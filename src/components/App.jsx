@@ -17,10 +17,12 @@ export default class App extends React.Component{
     super(props);
     this.state = {
       masterInquiryList: {},
-      masterProjectList: {}
+      masterProjectList: {},
+      adminLoggedIn: false
     };
 
     this.handleInquirySubmission = this.handleInquirySubmission.bind(this);
+    this.handleAdminLogin = this.handleAdminLogin.bind(this);
   }
 
   handleInquirySubmission(newInquiry){
@@ -31,11 +33,21 @@ export default class App extends React.Component{
     this.setState({masterInquiryList: newMasterInquryList});
   }
 
+  handleAdminLogin(credentialsMet){
+    if (credentialsMet){
+      this.setState({adminLoggedIn: true});
+    }
+  }
+
+  handleAdminLogout(){
+    this.setState({adminLoggedIn: false});
+  }
+
   render(){
     return(
       <div>
         {(window.location.hash !== '#/')
-          ? <Header/>
+          ? <Header onAdminLogin={this.handleAdminLogin} onAdminLogout={this.handleAdminLogout} adminLoggedIn={this.state.adminLoggedIn}/>
           : <span></span>
         }
         <Switch>
@@ -43,7 +55,7 @@ export default class App extends React.Component{
           <Route path='/portfolio' render={()=><Portfolio projectList={this.state.masterProjectList}/>} />
           <Route path='/about' render={()=><About/>} />
           <Route path='/contact' render={()=><Contact onNewInquirySubmission={this.handleInquirySubmission}/>} />
-          <Route path='/admin' render={()=><Admin/>} />
+          <Route path='/admin' render={()=><Admin adminLoggedIn={this.state.adminLoggedIn}/>} />
           <Route component={Error404}/>
         </Switch>
         <Footer/>
