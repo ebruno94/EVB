@@ -1,11 +1,17 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-export default function AdminLogin(){
+export default function AdminLogin(props){
   let _username = null;
   let _password = null;
 
   function handleAdminLogin(event){
-    event.preventDefault()
+    event.preventDefault();
+    if (_username.value === 'admin' && _password.value === 'admin'){
+      props.onAdminLogin(true);
+      _username.value = '';
+      _password.value = '';
+    }
   }
 
   return(
@@ -27,3 +33,7 @@ export default function AdminLogin(){
     </div>
   );
 }
+
+AdminLogin.propTypes = {
+  onAdminLogin: PropTypes.func
+};
