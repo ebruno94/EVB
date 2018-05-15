@@ -16,7 +16,8 @@ export default class App extends React.Component{
   constructor(props){
     super(props);
     this.state = {
-      masterInquiryList: {}
+      masterInquiryList: {},
+      masterProjectList: {}
     };
 
     this.handleInquirySubmission = this.handleInquirySubmission.bind(this);
@@ -29,6 +30,7 @@ export default class App extends React.Component{
     });
     this.setState({masterInquiryList: newMasterInquryList});
   }
+
   render(){
     return(
       <div>
@@ -38,7 +40,7 @@ export default class App extends React.Component{
         }
         <Switch>
           <Route exact path='/' render={()=><Home/>} />
-          <Route path='/portfolio' render={()=><Portfolio/>} />
+          <Route path='/portfolio' render={()=><Portfolio projectList={this.state.masterProjectList}/>} />
           <Route path='/about' render={()=><About/>} />
           <Route path='/contact' render={()=><Contact onNewInquirySubmission={this.handleInquirySubmission}/>} />
           <Route path='/admin' render={()=><Admin/>} />
