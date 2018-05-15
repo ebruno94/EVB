@@ -49,7 +49,7 @@ export default class App extends React.Component{
           <Route path='/portfolio' render={()=><Portfolio projectList={this.state.masterProjectList}/>} />
           <Route path='/about' render={()=><About/>} />
           <Route path='/contact' render={()=><Contact onNewInquirySubmission={this.handleInquirySubmission}/>} />
-          <Route path='/admin' render={()=><Admin onAdminLogin={this.handleAdminLogin} adminLoggedIn={this.state.adminLoggedIn}/>} />
+          <Route path='/admin' render={()=><Admin onAdminLogin={this.handleAdminLogin} adminLoggedIn={this.state.adminLoggedIn} inquiryList={this.state.masterInquiryList}/>} />
           <Route component={Error404}/>
         </Switch>
         <Footer/>
