@@ -7,7 +7,7 @@ export default function Home(){
       <style jsx>{`
         .pages{
           display: grid;
-          grid-template-columns: repeat(3, 1fr);
+          grid-template-columns: repeat(4, 1fr);
           grid-column-gap: 10px;
           justify-items: center;
         }
@@ -46,6 +46,11 @@ export default function Home(){
         <Link style={{textDecoration: 'none', color: 'black'}} to='/contact'>
           <div className='box'>
             <h1>Contact Us</h1>
+          </div>
+        </Link>
+        <Link style={{textDecoration: 'none', color: 'black'}} to='/admin'>
+          <div className='box'>
+            <h1>Admin Login</h1>
           </div>
         </Link>
       </div>
