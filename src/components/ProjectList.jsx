@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 export default function ProjectList(props){
   return(
     <div>
-      <h1>Project List</h1>
+      <h1>Projects</h1>
       {Object.keys(props.projectList).map(function(projectId){
         let project = props.projectList[projectId];
         return <Project
