@@ -34,20 +34,14 @@ export default class App extends React.Component{
   }
 
   handleAdminLogin(credentialsMet){
-    if (credentialsMet){
-      this.setState({adminLoggedIn: true});
-    }
-  }
-
-  handleAdminLogout(){
-    this.setState({adminLoggedIn: false});
+    this.setState({adminLoggedIn: credentialsMet});
   }
 
   render(){
     return(
       <div>
         {(window.location.hash !== '#/')
-          ? <Header onAdminLogin={this.handleAdminLogin} onAdminLogout={this.handleAdminLogout} adminLoggedIn={this.state.adminLoggedIn}/>
+          ? <Header onAdminLogout={this.handleAdminLogin} adminLoggedIn={this.state.adminLoggedIn}/>
           : <span></span>
         }
         <Switch>
@@ -55,7 +49,7 @@ export default class App extends React.Component{
           <Route path='/portfolio' render={()=><Portfolio projectList={this.state.masterProjectList}/>} />
           <Route path='/about' render={()=><About/>} />
           <Route path='/contact' render={()=><Contact onNewInquirySubmission={this.handleInquirySubmission}/>} />
-          <Route path='/admin' render={()=><Admin adminLoggedIn={this.state.adminLoggedIn}/>} />
+          <Route path='/admin' render={()=><Admin onAdminLogin={this.handleAdminLogin} adminLoggedIn={this.state.adminLoggedIn}/>} />
           <Route component={Error404}/>
         </Switch>
         <Footer/>
