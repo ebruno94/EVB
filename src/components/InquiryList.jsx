@@ -9,7 +9,7 @@ export default function InquiryList(props){
       <hr/>
       {Object.keys(props.inquiryList).map(function(inquiryId){
         let inquiry = props.inquiryList[inquiryId];
-        return <Inqury
+        return <Inquiry
           name={inquiry.name}
           phone={inquiry.phone}
           email={inquiry.email}
