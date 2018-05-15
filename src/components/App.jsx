@@ -26,11 +26,10 @@ export default class App extends React.Component{
   }
 
   handleInquirySubmission(newInquiry){
-    let newInquiryId = v4();
-    let newMasterInquryList = Object.assign({}, this.state.masterInquiryList, {
-      [newInquiryId]: newInquiry
+    let newMasterInquiryList = Object.assign({}, this.state.masterInquiryList, {
+      [newInquiry.id]: newInquiry
     });
-    this.setState({masterInquiryList: newMasterInquryList});
+    this.setState({masterInquiryList: newMasterInquiryList});
   }
 
   handleAdminLogin(credentialsMet){
