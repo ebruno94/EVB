@@ -15,4 +15,4 @@ export default function Portfolio(props){
 
 Portfolio.propTypes = {
   projectList: PropTypes.object
-}
+};
