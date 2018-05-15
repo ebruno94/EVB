@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {v4} from 'uuid';
 
 export default function Contact(props){
   let _name = null;
@@ -7,13 +8,13 @@ export default function Contact(props){
   let _email = null;
   let _question = null;
 
-  function handleNewFormSubmission(e){
-    e.preventDefault();
-    props.onNewInquirySubmission({name: _name.value, phone: _phone.value, email: _email.value, question: _question.value});
-    _name = '';
-    _phone = '';
-    _email = '';
-    _question = '';
+  function handleNewFormSubmission(event){
+    event.preventDefault();
+    props.onNewInquirySubmission({id: v4(), name: _name.value, phone: _phone.value, email: _email.value, question: _question.value});
+    _name.value = '';
+    _phone.value = '';
+    _email.value = '';
+    _question.value = '';
   }
 
   return(
@@ -38,7 +39,7 @@ export default function Contact(props){
           id='email'
           ref={(input)=>{_email = input;}} />
         <br/>
-        <label>Comment</label>
+        <label>Comments</label>
         <textarea
           type='text'
           id='question'
