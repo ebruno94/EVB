@@ -17,6 +17,10 @@ export default (state = {}, action) => {
     newState = Object.assign({}, state);
     delete newState[id];
     return newState;
+  case 'RECEIVE_INQUIRY':
+    newState = Object.assign({}, state);
+    newState[action.inquiry.id] = action.inquiry;
+    return newState;
   default:
     return state;
   }
