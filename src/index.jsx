@@ -9,7 +9,9 @@ import {Provider} from 'react-redux';
 import rootReducer from './reducers/index';
 import thunkMiddleware from 'redux-thunk';
 
-const store = createStore(rootReducer, applyMiddleware(thunkMiddleware));
+import middlewareLogger from './middleware/middleware-logger';
+
+const store = createStore(rootReducer, applyMiddleware( middlewareLogger, thunkMiddleware));
 
 let unsubscribe = store.subscribe(()=>
   console.log(store.getState())
