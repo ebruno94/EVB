@@ -15,12 +15,12 @@ export default function InquiryList(props){
           email={inquiry.email}
           question={inquiry.question}
           key={inquiryId}
-          inquiryId={inquiryId} />
+          inquiryId={inquiryId} />;
       })}
     </div>
   );
 }
 
 InquiryList.propTypes = {
-  InquiryList: PropTypes.object
+  inquiryList: PropTypes.object
 };

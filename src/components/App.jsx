@@ -8,8 +8,6 @@ import About from './About';
 import Portfolio from './Portfolio';
 import Admin from './Admin';
 
-import {v4} from 'uuid';
-
 import { Switch, Route } from 'react-router-dom';
 
 export default class App extends React.Component{

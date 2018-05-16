@@ -9,8 +9,8 @@ export default function Header(props){
       <h1>EVB</h1>
       <h1>Construction and Trading Services</h1>
       <Link to='/'>Home</Link> | <Link to='/about'>About Us</Link> | <Link to='/portfolio'> Portfolio</Link> | <Link to='/contact'>Contact Us!</Link> {(props.adminLoggedIn)?
-      <div> <Link to='/admin'>Admin Page</Link><button type='button' onClick={() => props.onAdminLogout(false)}>Logout</button>
-      </div>  : <span></span>}
+        <div> <Link to='/admin'>Admin Page</Link><button type='button' onClick={() => props.onAdminLogout(false)}>Logout</button>
+        </div>  : <span></span>}
     </div>
   );
 }
