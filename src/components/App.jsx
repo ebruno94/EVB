@@ -13,6 +13,8 @@ import { Switch, Route, withRouter } from 'react-router-dom';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 
+import * as actions from './../actions';
+
 class App extends React.Component{
   constructor(props){
     super(props);
@@ -21,6 +23,12 @@ class App extends React.Component{
       adminLoggedIn: false
     };
     this.handleAdminLogin = this.handleAdminLogin.bind(this);
+  }
+
+  componentWillMount(){
+    const {dispatch} = this.props;
+    const {watchFirebaseInquiriesRef} = actions;
+    dispatch(watchFirebaseInquiriesRef());
   }
 
   handleAdminLogin(credentialsMet){
