@@ -8,26 +8,19 @@ import About from './About';
 import Portfolio from './Portfolio';
 import Admin from './Admin';
 
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, withRouter } from 'react-router-dom';
 
-export default class App extends React.Component{
+import {connect} from 'react-redux';
+import PropTypes from 'prop-types';
+
+class App extends React.Component{
   constructor(props){
     super(props);
     this.state = {
-      masterInquiryList: {},
       masterProjectList: {},
       adminLoggedIn: false
     };
-
-    this.handleInquirySubmission = this.handleInquirySubmission.bind(this);
     this.handleAdminLogin = this.handleAdminLogin.bind(this);
-  }
-
-  handleInquirySubmission(newInquiry){
-    let newMasterInquiryList = Object.assign({}, this.state.masterInquiryList, {
-      [newInquiry.id]: newInquiry
-    });
-    this.setState({masterInquiryList: newMasterInquiryList});
   }
 
   handleAdminLogin(credentialsMet){
@@ -46,7 +39,7 @@ export default class App extends React.Component{
           <Route path='/portfolio' render={()=><Portfolio projectList={this.state.masterProjectList}/>} />
           <Route path='/about' render={()=><About/>} />
           <Route path='/contact' render={()=><Contact onNewInquirySubmission={this.handleInquirySubmission}/>} />
-          <Route path='/admin' render={()=><Admin onAdminLogin={this.handleAdminLogin} adminLoggedIn={this.state.adminLoggedIn} inquiryList={this.state.masterInquiryList}/>} />
+          <Route path='/admin' render={()=><Admin onAdminLogin={this.handleAdminLogin} adminLoggedIn={this.state.adminLoggedIn} inquiryList={this.props.inquiryList}/>} />
           <Route component={Error404}/>
         </Switch>
         <Footer/>
@@ -54,3 +47,15 @@ export default class App extends React.Component{
     );
   }
 }
+
+App.propTypes = {
+  inquiryList: PropTypes.object
+};
+
+const mapStateToProps = state =>{
+  return {
+    inquiryList: state.inquiryList
+  };
+};
+
+export default withRouter(connect(maptStateToProps)(App));
