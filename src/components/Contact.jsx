@@ -1,6 +1,5 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {v4} from 'uuid';
 import {addInquiry} from './../actions';
 
 function Contact(props){
@@ -12,7 +11,7 @@ function Contact(props){
   function handleNewFormSubmission(event){
     const {dispatch} = props;
     event.preventDefault();
-    dispatch(addInquiry(_name.value, _phone.value, _email.value, question.value));
+    dispatch(addInquiry(_name.value, _phone.value, _email.value, _question.value));
     _name.value = '';
     _phone.value = '';
     _email.value = '';
