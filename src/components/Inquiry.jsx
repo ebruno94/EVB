@@ -1,19 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {connect} from 'react-redux'
+import {connect} from 'react-redux';
+import {removeInquiry} from './../actions';
 
 function Inquiry(props){
 
   function handleResolve(){
-    console.log(props);
     const {dispatch} = props;
-    const action = {
-      type: 'REMOVE_INQUIRY',
-      id: props.inquiryId
-    };
     if (confirm('Resolve this inquiry? (This action will delete the inquiry!)')){
-      dispatch(action);
-    };
+      dispatch(removeInquiry(props.inquiryId));
+    }
   }
 
   return(
