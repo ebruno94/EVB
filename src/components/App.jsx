@@ -38,7 +38,7 @@ class App extends React.Component{
           <Route exact path='/' render={()=><Home/>} />
           <Route path='/portfolio' render={()=><Portfolio projectList={this.state.masterProjectList}/>} />
           <Route path='/about' render={()=><About/>} />
-          <Route path='/contact' render={()=><Contact onNewInquirySubmission={this.handleInquirySubmission}/>} />
+          <Route path='/contact' render={()=><Contact/>} />
           <Route path='/admin' render={()=><Admin onAdminLogin={this.handleAdminLogin} adminLoggedIn={this.state.adminLoggedIn} inquiryList={this.props.inquiryList}/>} />
           <Route component={Error404}/>
         </Switch>
@@ -58,4 +58,4 @@ const mapStateToProps = state =>{
   };
 };
 
-export default withRouter(connect(maptStateToProps)(App));
+export default withRouter(connect(mapStateToProps)(App));
