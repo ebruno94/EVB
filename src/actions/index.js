@@ -14,6 +14,10 @@ export function addInquiry(_name, _email, _phone, _question){
   });
 }
 
+export function removeInquiry(key){
+  return () => inquiries.child(key).remove();
+}
+
 export function watchFirebaseInquiriesRef(){
   return function(dispatch){
     inquiries.on('child_added', data => {
@@ -22,6 +26,12 @@ export function watchFirebaseInquiriesRef(){
       });
       dispatch(receiveInquiry(newInquiry));
     });
+    inquiries.on('child_removed', data =>{
+      const inquiryToBeDeleted = Object.assign({}, data.val(), {
+        id: data.getKey()
+      });
+      dispatch(deleteInquiry(inquiryToBeDeleted));
+    });
   };
 }
 
@@ -29,5 +39,12 @@ function receiveInquiry(firebaseInquiry){
   return {
     type: 'RECEIVE_INQUIRY',
     inquiry: firebaseInquiry
+  };
+}
+
+function deleteInquiry(firebaseInquiry){
+  return {
+    type: 'REMOVE_INQUIRY',
+    id: firebaseInquiry.id
   };
 }
