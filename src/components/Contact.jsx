@@ -1,16 +1,25 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import {connect} from 'react-redux';
 import {v4} from 'uuid';
 
-export default function Contact(props){
+function Contact(props){
   let _name = null;
   let _phone = null;
   let _email = null;
   let _question = null;
 
   function handleNewFormSubmission(event){
+    const {dispatch} = props;
     event.preventDefault();
-    props.onNewInquirySubmission({id: v4(), name: _name.value, phone: _phone.value, email: _email.value, question: _question.value});
+    const action = {
+      type: 'ADD_INQUIRY',
+      id: v4(),
+      name: _name.value,
+      phone: _phone.value,
+      email: _email.value,
+      question: _question.value
+    };
+    dispatch(action);
     _name.value = '';
     _phone.value = '';
     _email.value = '';
@@ -51,6 +60,4 @@ export default function Contact(props){
   );
 }
 
-Contact.propTypes = {
-  onNewInquirySubmission: PropTypes.func
-};
+export default connect()(Contact);
