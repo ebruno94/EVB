@@ -7,6 +7,7 @@ import Contact from './Contact';
 import About from './About';
 import Portfolio from './Portfolio';
 import Admin from './Admin';
+import Products from './Products';
 
 import { Switch, Route, withRouter } from 'react-router-dom';
 
@@ -27,8 +28,9 @@ class App extends React.Component{
 
   componentWillMount(){
     const {dispatch} = this.props;
-    const {watchFirebaseInquiriesRef} = actions;
+    const {watchFirebaseInquiriesRef, watchFirebaseItemsRef} = actions;
     dispatch(watchFirebaseInquiriesRef());
+    dispatch(watchFirebaseItemsRef());
   }
 
   handleAdminLogin(credentialsMet){
@@ -47,7 +49,8 @@ class App extends React.Component{
           <Route path='/portfolio' render={()=><Portfolio projectList={this.state.masterProjectList}/>} />
           <Route path='/about' render={()=><About/>} />
           <Route path='/contact' render={()=><Contact/>} />
-          <Route path='/admin' render={()=><Admin onAdminLogin={this.handleAdminLogin} adminLoggedIn={this.state.adminLoggedIn} inquiryList={this.props.inquiryList}/>} />
+          <Route path='/admin' render={()=><Admin onAdminLogin={this.handleAdminLogin} adminLoggedIn={this.state.adminLoggedIn} inquiryList={this.props.inquiryList} itemList={this.props.itemList}/>}/>
+          <Route path='/products' render={()=><Products itemList={this.props.itemList}/>}/>
           <Route component={Error404}/>
         </Switch>
         <Footer/>
@@ -57,12 +60,14 @@ class App extends React.Component{
 }
 
 App.propTypes = {
-  inquiryList: PropTypes.object
+  inquiryList: PropTypes.object,
+  itemList: PropTypes.object
 };
 
 const mapStateToProps = state =>{
   return {
-    inquiryList: state.inquiryList
+    inquiryList: state.inquiryList,
+    itemList: state.itemList
   };
 };
 
