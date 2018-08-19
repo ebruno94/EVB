@@ -6,6 +6,7 @@ export default function ProjectList(props){
   return(
     <div>
       <h1>Projects</h1>
+      <hr/>
       {Object.keys(props.projectList).map(function(projectId){
         let project = props.projectList[projectId];
         return <Project
