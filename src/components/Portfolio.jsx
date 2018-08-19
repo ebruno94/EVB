@@ -5,10 +5,18 @@ import PropTypes from 'prop-types';
 export default function Portfolio(props){
   return(
     <div>
-      <h1>Portfolio</h1>
-      <hr/>
-      <p>Below is a list of projects we have done in the past</p>
-      <ProjectList projectList={props.projectList}/>
+      <style jsx>{`
+          h1 {
+            text-align: center;
+          }
+
+
+      `}</style>
+      <div>
+        <h1>Portfolio</h1>
+        <hr/>
+        <h1> THIS PAGE IS UNDER CONSTRUCTION </h1>
+      </div>
     </div>
   );
 }
