@@ -16,20 +16,44 @@ export default function AdminLogin(props){
 
   return(
     <div>
-      <h1>Welcome, Admin!</h1>
-      <form onSubmit={handleAdminLogin}>
-        <label>Username: </label>
-        <input
-          type='text'
-          id='username'
-          ref={(input)=>{_username = input;}} />
-        <label>Password: </label>
-        <input
-          type='password'
-          id='password'
-          ref={(input)=>{_password = input;}} />
-        <button type='submit'>Login</button>
-      </form>
+      <style jsx>{`
+        h1, label, input, form, p {
+          text-align: center;
+          justify-content: center;
+        }
+
+        .container {
+          display: block;
+          margin-left: 200px;
+          margin-right: 200px;
+          border: 2px solid black;
+          padding: 20px;
+          border-radius: 25px;
+        }
+
+        label ,input {
+          margin-bottom: 20px;
+        }
+
+      `}</style>
+      <div className='container'>
+        <h1>Please Log In</h1>
+        <form onSubmit={handleAdminLogin}>
+          <label>Username: </label><br/>
+          <input
+            type='text'
+            id='username'
+            ref={(input)=>{_username = input;}} />
+          <br/>
+          <label>Password: </label><br/>
+          <input
+            type='password'
+            id='password'
+            ref={(input)=>{_password = input;}} />
+          <br/>
+          <button type='submit'>Login</button>
+        </form>
+      </div>
     </div>
   );
 }
