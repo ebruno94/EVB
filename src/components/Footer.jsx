@@ -13,6 +13,7 @@ export default function Footer(){
           width: 100%;
           z-index: 1;
           margin-bottom: 0px;
+          margin-top: 0px;
         }
       `}</style>
       <div className='footer'>
